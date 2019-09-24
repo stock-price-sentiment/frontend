@@ -10,5 +10,4 @@ export const theme = createMuiTheme({
       main: grey[800],
     }
   },
-  shadows: ['none'],
 });
