@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import StockView from './views/StockView'
-import './App.css';
+import './styles/App.scss';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div className="app-ctn">
       <Route path="/" component={StockView} />
     </div>
   );

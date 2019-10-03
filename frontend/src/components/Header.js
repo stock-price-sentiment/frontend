@@ -5,33 +5,47 @@ import AddBox from "@material-ui/icons/AddBox";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 
 const styles = theme => ({
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'space-between'
-  },
-  headerText: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-end'
+  addBox: {
+    cursor: "pointer",
+    fontSize: 40
   },
   dropArrow: {
-    fontSize: '30px'
+    cursor: "pointer",
+    fontSize: 40,
+    fontWeight: "bold"
+  },
+  headerText: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end"
+  },
+  searchIcon: {
+    cursor: "pointer"
+  },
+  title: {
+    fontWeight: "bold"
+  },
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between"
   }
-})
+});
 
 const Header = ({ classes }) => {
   return (
     <AppBar>
       <Toolbar className={classes.toolbar}>
-        <SearchIcon />
+        <SearchIcon className={classes.searchIcon} />
         <div className={classes.headerText}>
-          <Typography variant="h6">MAIN PORTFOLIO</Typography>
+          <Typography className={classes.title} variant="h5">
+            MAIN PORTFOLIO
+          </Typography>
           <ArrowDropDown className={classes.dropArrow} />
         </div>
-        <AddBox />
+        <AddBox className={classes.addBox} />
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default withStyles(styles)(Header)
+export default withStyles(styles)(Header);
