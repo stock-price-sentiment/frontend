@@ -1,7 +1,8 @@
 import React from "react";
 import '../styles/StockView.scss';
-import Header from '../components/Header';
+import StockViewHeader from '../components/StockViewHeader';
 import StockList from '../components/StockList';
+import { Container, useTheme, withStyles } from "@material-ui/core";
 
 const dummyData = [
   { ticker: 'AAPL', price: 211.84, score: 0.54, priceChange: 0.02 },
@@ -10,22 +11,32 @@ const dummyData = [
   { ticker: 'UBER', price: 211.84, score: -0.34, priceChange: -0.08 },
 ]
 
+const styles = theme => ({
+  container: {
+    backgroundColor: theme.palette.secondary.main,
+    marginTop: 20,
+    padding: 0,
+    minHeight: 500,
+  }
+})
+
 class StockView extends React.Component {
   state = {
     stocks: dummyData,
   }
   render() {
-    const { stocks } = this.state;
-
+    const { stocks } = this.state,
+          { classes} = this.props;
+          
     return (
-      <div className='stock-view-ctn'>
-        <Header />
-        <div className="stock-list-ctn">
+      <Container maxWidth="sm" className={classes.container}>
+        <StockViewHeader />
+        <Container>
           <StockList stocks={stocks} />
-        </div>
-      </div>
+        </Container>
+      </Container>
     )
   }
 }
 
-export default StockView
+export default withStyles(styles)(StockView)

@@ -31,9 +31,9 @@ const styles = theme => ({
   }
 });
 
-const Header = ({ classes }) => {
+const StockViewHeader = ({ classes }) => {
   return (
-    <AppBar>
+    <AppBar position="relative">
       <Toolbar className={classes.toolbar}>
         <SearchIcon className={classes.searchIcon} />
         <div className={classes.headerText}>
@@ -48,4 +48,4 @@ const Header = ({ classes }) => {
   );
 };
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(StockViewHeader);

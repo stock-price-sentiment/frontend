@@ -1,35 +1,33 @@
 import React from "react";
+import { Paper, Typography, withStyles, Grid } from "@material-ui/core";
 import "../styles/StockTab.scss";
-import { Paper, Typography, withStyles } from "@material-ui/core";
+import SentimentGauge from "./SentimentGauge";
 
 const styles = theme => ({
   column: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '100%',
   },
   heading: {
-    color: "white",
     fontWeight: "bold"
   },
   paper: {
     background: "inherit",
-    border: "1px solid #F2C94C",
+    border: "2px solid #F2C94C",
     display: "flex",
     justifyContent: "space-between",
     margin: 20,
-    padding: 10,
-    maxWidth: 600,
-    width: "90%",
-    minWidth: 400
+    padding: '5px',
   },
   score: {
     fontWeight: "bold"
   },
   tickerPrice: {
-    color: 'white',
     fontWeight: 'bold',
-  }
+    fontSize: 20,
+  },
 });
 
 const StockTab = props => {
@@ -38,34 +36,29 @@ const StockTab = props => {
   return (
     <Paper className={classes.paper} square={true}>
 
-      <div className={classes.column}>
-        <Typography className={classes.tickerPrice}>{ticker.toUpperCase()}</Typography>
-        <Typography className={classes.tickerPrice}>${price}</Typography>
-      </div>
+      <Grid container justify="space-between">
+        <Grid style={{ width: 100 }} className={classes.column}>
+          <Typography align="center" className={classes.tickerPrice}>{ticker.toUpperCase()}</Typography>
+          <Typography align="center" className={classes.tickerPrice}>${price}</Typography>
+        </Grid>
 
-      <div className={classes.column}>
-        <Typography className={classes.heading} variant="body1">
-          OVERALL
-        </Typography>
-        <Typography
-          className={classes.score}
-          style={priceChange > 0 ? { color: "red" } : { color: "#27AE60" }}
-        >
-          {score}
-        </Typography>
-      </div>
+        <Grid item className={classes.column}>
+          <Typography align="center" color="primary" className={classes.heading} variant="body1">SENTIMENT SCORE</Typography>
+          <SentimentGauge score={score} />
+        </Grid>
 
-      <div className={classes.column}>
-        <Typography className={classes.heading} variant="subtitle2">
-          24HR +/-
-        </Typography>
-        <Typography
-          className={classes.score}
-          style={priceChange > 0 ? { color: "red" } : { color: "#27AE60" }}
-        >
-          {`${priceChange >= 0 ? '+' : '-'}${priceChange}`}
-        </Typography>
-      </div>
+        <Grid item className={classes.column}>
+          <Typography align="center" color="primary" className={classes.heading} variant="body1">OVERALL</Typography>
+          <Typography align="center" className={classes.score} style={score > 0 ? { color: "#27AE60" } : { color: "red" }}>{score}</Typography>
+        </Grid>
+
+        <Grid item className={classes.column}>
+          <Typography align="center" color="primary" className={classes.heading} variant="subtitle2">24HR +/-</Typography>
+          <Typography align="center" className={classes.score} style={priceChange > 0 ? { color: "#27AE60" } : { color: "red" }}>{`${priceChange >= 0 ? '+' : ''}${priceChange}`}</Typography>
+        </Grid>
+
+      </Grid>
+
     </Paper>
   );
 };
