@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import StockView from './views/StockView'
-import './App.css';
+import MainHeader from './components/MainHeader';
+import './styles/App.scss';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div className="app-ctn">
+      <MainHeader />
       <Route path="/" component={StockView} />
     </div>
   );

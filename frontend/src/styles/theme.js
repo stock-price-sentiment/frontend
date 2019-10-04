@@ -8,6 +8,12 @@ export const theme = createMuiTheme({
     },
     secondary: {
       main: grey[800],
+    },
+    text: {
+      primary: "#FFFFFF",
     }
+  },
+  typography: {
+
   },
 });
