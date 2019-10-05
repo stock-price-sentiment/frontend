@@ -6,7 +6,13 @@ import './styles/App.scss';
 
 const App = () => {
   return (
-    <div className="app-ctn">
+    <div className="app-ctn"
+      style={{
+        height: '100vh',
+        maxHeight: '100vh',
+        overflow: 'hidden',
+      }}
+    >
       <MainHeader />
       <Route path="/" component={StockView} />
     </div>

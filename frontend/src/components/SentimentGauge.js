@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/StockTab.scss";
-import { Paper, Typography, withStyles, Grid } from "@material-ui/core";
+import { withStyles, Grid } from "@material-ui/core";
 
 const styles = theme => ({
   bar: {

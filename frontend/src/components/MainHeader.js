@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, useTheme, withStyles } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, withStyles } from "@material-ui/core";
 
 const styles = theme => ({
   header: {
@@ -15,8 +15,8 @@ const styles = theme => ({
   profileIcon: {
     backgroundColor: 'lightgrey',
     borderRadius: '50%',
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -24,9 +24,8 @@ const styles = theme => ({
 })
 
 const MainHeader = ({ classes }) => {
-  // const theme = useTheme()
   return (
-    <AppBar color='secondary' position="relative">
+    <AppBar color='secondary' position="sticky">
       <Toolbar className={classes.header}>
         <nav className={classes.nav}>
           <Typography color='primary' className={classes.navItem}>HOME</Typography>
@@ -34,7 +33,7 @@ const MainHeader = ({ classes }) => {
           <Typography color='primary' className={classes.navItem}>SETTINGS</Typography>
         </nav>
         <div className={classes.profileIcon}>
-          <Typography variant="h4">U</Typography>
+          <Typography weight="bold" color="secondary" variant="h5">U</Typography>
         </div>
       </Toolbar>
     </AppBar>
