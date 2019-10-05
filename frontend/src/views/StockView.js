@@ -29,9 +29,9 @@ class StockView extends React.Component {
           { classes} = this.props;
           
     return (
-      <Container maxWidth="sm" className={classes.container}>
+      <Container maxWidth="md" className={classes.container}>
         <StockViewHeader />
-        <Container>
+        <Container style={{ padding: 0 }}>
           <StockList stocks={stocks} />
         </Container>
       </Container>
