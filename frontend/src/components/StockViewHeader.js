@@ -1,5 +1,5 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, withStyles } from "@material-ui/core";
+import React, { useContext } from "react";
+import { AppBar, Button, Toolbar, Typography, withStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
@@ -19,6 +19,11 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "flex-end"
   },
+  searchBtn: {
+    borderRadius: '50%',
+    width: '40px',
+    minWidth: 'unset',
+  },
   searchIcon: {
     cursor: "pointer"
   },
@@ -35,7 +40,9 @@ const StockViewHeader = ({ classes }) => {
   return (
     <AppBar position="relative">
       <Toolbar className={classes.toolbar}>
-        <SearchIcon className={classes.searchIcon} />
+        <Button className={classes.searchBtn}>
+          <SearchIcon className={classes.searchIcon} />
+        </Button>
         <div className={classes.headerText}>
           <Typography className={classes.title} variant="h5">
             MAIN PORTFOLIO
