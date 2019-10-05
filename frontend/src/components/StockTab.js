@@ -26,18 +26,19 @@ const styles = theme => ({
   },
   tickerPrice: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 12,
   },
 });
 
 const StockTab = props => {
   const { price, priceChange, score, ticker } = props.stock,
     { classes } = props;
+
   return (
     <Paper className={classes.paper} square={true}>
 
       <Grid container justify="space-between">
-        <Grid style={{ width: 100 }} className={classes.column}>
+        <Grid item className={classes.column}>
           <Typography align="center" className={classes.tickerPrice}>{ticker.toUpperCase()}</Typography>
           <Typography align="center" className={classes.tickerPrice}>${price}</Typography>
         </Grid>
