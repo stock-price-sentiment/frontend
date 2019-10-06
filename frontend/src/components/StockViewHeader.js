@@ -83,6 +83,9 @@ class StockViewHeader extends React.Component {
                   onChange={handleTickerSearch}
                   value={ticker}
                   variant="outlined"
+                  inputProps={{
+                    style: {fontSize: 16} 
+                  }}
                 />
               </form>
               </>

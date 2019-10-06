@@ -65,10 +65,13 @@ class AddStock extends React.Component {
             fullWidth
             label="ticker"
             margin="dense"
-            // autoFocus
+            autoFocus
             onChange={this.handleChange}
             value={ticker}
             variant="outlined"
+            inputProps={{
+              style: {fontSize: 16} 
+            }}
           />
         </form>
         <Button className={classes.button} disabled={ticker.length < 1 ? true : false} variant="contained" color='secondary' onSubmit={this.handleSubmit}>ADD</Button>
