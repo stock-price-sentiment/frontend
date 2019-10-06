@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { AppBar, Button, Toolbar, Typography, withStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import AddBox from "@material-ui/icons/AddBox";
@@ -17,7 +17,7 @@ const styles = theme => ({
   headerText: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "flex-end"
+    alignItems: "center",
   },
   searchBtn: {
     borderRadius: '50%',
@@ -25,7 +25,9 @@ const styles = theme => ({
     minWidth: 'unset',
   },
   searchIcon: {
-    cursor: "pointer"
+    cursor: "pointer",
+    fontSize: 20,
+    transform: 'scaleX(-1)',
   },
   title: {
     fontWeight: "bold"
@@ -36,20 +38,27 @@ const styles = theme => ({
   }
 });
 
-const StockViewHeader = ({ classes }) => {
+const StockViewHeader = props => {
+  const { classes, showAddStockForm } = props;
   return (
     <AppBar position="relative">
       <Toolbar className={classes.toolbar}>
+
         <Button className={classes.searchBtn}>
-          <SearchIcon className={classes.searchIcon} />
+          <SearchIcon color="secondary" className={classes.searchIcon} />
         </Button>
+        
         <div className={classes.headerText}>
-          <Typography className={classes.title} variant="h5">
-            MAIN PORTFOLIO
-          </Typography>
-          <ArrowDropDown className={classes.dropArrow} />
+          <Typography color="secondary" className={classes.title} variant="h5">MAIN PORTFOLIO</Typography>
+          <ArrowDropDown color="secondary" className={classes.dropArrow} />
         </div>
-        <AddBox className={classes.addBox} />
+        
+        <AddBox
+          color="secondary"
+          className={classes.addBox}
+          onClick={showAddStockForm}
+        />
+
       </Toolbar>
     </AppBar>
   );
