@@ -65,7 +65,7 @@ class AddStock extends React.Component {
             fullWidth
             label="ticker"
             margin="dense"
-            autoFocus
+            // autoFocus
             onChange={this.handleChange}
             value={ticker}
             variant="outlined"
