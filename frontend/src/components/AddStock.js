@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextField, withStyles, Paper } from '@material-ui/core';
+import { Button, Paper, TextField, withStyles, withTheme } from '@material-ui/core';
 
 const styles = theme => ({
   button: {
@@ -8,10 +8,7 @@ const styles = theme => ({
   },
   paper: {
     position: 'absolute',
-    // top: 150,
-    // left: 10,
-    // right: 10,
-    top: 100,
+    top: 40,
     left: 0,
     right: 0,
     height: 100,
@@ -20,7 +17,6 @@ const styles = theme => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 5,
-    // opacity: 0,
   },
   form: {
     display: 'flex',
@@ -38,8 +34,7 @@ class AddStock extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState({ style: { opacity: 1, transition: '0.5s opacity' } })
-    this.setState({ style: { top: 150, left: 10, right: 10, transition: '0.5s all' } })
+    this.setState({ style: { top: 90, left: 10, right: 10, transition: '0.5s all' } })
   }
 
   handleChange = e => {
@@ -48,17 +43,17 @@ class AddStock extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { ticker } = this.state;
-    ticker.length > 0 && this.props.addStockToList(ticker);
+    this.state.ticker.length > 0 && this.props.addStockToList(this.state.ticker);
     this.setState({ ticker: '' })
+    this.props.showAddStockForm();
   }
 
   render() {
-    const { classes, showAddStockForm } = this.props,
-          { ticker } = this.state;
+    const { classes, showAddStockForm, theme } = this.props,
+          { style, ticker } = this.state;
 
     return (
-      <Paper className={classes.paper} style={this.state.style} >
+      <Paper className={classes.paper} style={style} >
         <form className={classes.form} onSubmit={this.handleSubmit}>
           <TextField
             className={classes.textInput}
@@ -70,15 +65,15 @@ class AddStock extends React.Component {
             value={ticker}
             variant="outlined"
             inputProps={{
-              style: {fontSize: 16} 
+              style: {fontSize: 16, color: theme.palette.secondary.main} 
             }}
           />
         </form>
-        <Button className={classes.button} disabled={ticker.length < 1 ? true : false} variant="contained" color='secondary' onSubmit={this.handleSubmit}>ADD</Button>
+        <Button className={classes.button} disabled={ticker.length < 1 ? true : false} variant="contained" color='secondary' onClick={this.handleSubmit}>ADD</Button>
         <Button className={classes.button} variant="contained" color='secondary' onClick={showAddStockForm}>CANCEL</Button>
       </Paper>
     )
   }
 }
 
-export default withStyles(styles)(AddStock);
+export default withTheme(withStyles(styles)(AddStock));
