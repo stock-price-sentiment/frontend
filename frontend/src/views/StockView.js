@@ -34,7 +34,7 @@ class StockView extends React.Component {
   }
 
   showAddStockForm = e => {
-    this.setState({ showForm: true });
+    this.setState({ showForm: !this.state.showForm });
   }
 
   addStockToList = ticker => {
@@ -59,7 +59,7 @@ class StockView extends React.Component {
           showAddStockForm={this.showAddStockForm}
           ticker={searchedTicker}
         />
-        {showForm ? <AddStock addStockToList={this.addStockToList} /> : undefined}
+        {showForm ? <AddStock addStockToList={this.addStockToList} showAddStockForm={this.showAddStockForm} /> : undefined}
         <StockList stocks={stocks} searchedTicker={searchedTicker} />
       </Container>
     )
