@@ -12,7 +12,7 @@ const StockList = props => {
       style={{
         padding: 0,
         height: '100%',
-        paddingBottom: 200,
+        paddingBottom: 100,
         overflowY: 'scroll'
       }}
     >
