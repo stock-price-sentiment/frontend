@@ -30,21 +30,37 @@ class StockView extends React.Component {
   state = {
     stocks: dummyData,
     showForm: false,
+    searchedTicker: '',
   }
 
   showAddStockForm = e => {
     this.setState({ showForm: true });
   }
 
+  addStockToList = ticker => {
+    this.setState(prevState => ({
+      stocks: [...prevState.stocks, { ticker: ticker, price: 1.00, score: 0.5, priceChange: 1.00 }],
+      showForm: false,
+    }))
+  }
+
+  handleTickerSearch = e => {
+    this.setState({ searchedTicker: e.target.value.toUpperCase() })
+  }
+
   render() {
-    const { showForm, stocks } = this.state,
+    const { showForm, stocks, searchedTicker } = this.state,
           { classes} = this.props;
           
     return (
       <Container maxWidth="md" className={classes.container}>
-        <StockViewHeader showAddStockForm={this.showAddStockForm} />
-        {showForm ? <AddStock /> : undefined}
-        <StockList stocks={stocks} />
+        <StockViewHeader
+          handleTickerSearch={this.handleTickerSearch}
+          showAddStockForm={this.showAddStockForm}
+          ticker={searchedTicker}
+        />
+        {showForm ? <AddStock addStockToList={this.addStockToList} /> : undefined}
+        <StockList stocks={stocks} searchedTicker={searchedTicker} />
       </Container>
     )
   }

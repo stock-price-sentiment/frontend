@@ -21,7 +21,14 @@ class AddStock extends React.Component {
   }
 
   handleChange = e => {
-    this.setState({ ticker: e.target.value })
+    this.setState({ ticker: e.target.value.toUpperCase() })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { ticker } = this.state;
+    ticker.length > 0 && this.props.addStockToList(ticker);
+    this.setState({ ticker: '' })
   }
 
   render() {
@@ -30,7 +37,7 @@ class AddStock extends React.Component {
 
     return (
       <Container className={classes.container}>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <TextField
             className={classes.textInput}
             fullWidth
